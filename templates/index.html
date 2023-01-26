@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flask - Postgres Example</title>
+    </head>
+    <body>
+        <button id="get-usernames-button" onclick="getUsernames()">Get Usernames</button>
+        <br>
+        <div id="username-list"></div>
+        <script>
+            function getUsernames() {
+                fetch('/usernames')
+                .then(response => response.json())
+                .then(data => {
+                    let usernameList = document.getElementById("username-list");
+                    usernameList.innerHTML = "";
+                    data.forEach(username => {
+                        let node = document.createElement("LI");
+                        let textnode = document.createTextNode(username);
+                        node.appendChild(textnode);
+                        usernameList.appendChild(node);
+                    });
+                });
+            }
+        </script>
+    </body>
+</html>
