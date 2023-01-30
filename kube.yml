@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-python-script
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-python-script
+  template:
+    metadata:
+      labels:
+        app: my-python-script
+    spec:
+      containers:
+      - name: a16c79260198
+        image: paulbrennan2021/repo_for_python_webapp:webapp_push
+        ports:
+        - containerPort: 8080
+      
