@@ -1,10 +1,10 @@
-from flask import Flask,  render_template, request
+from flask import Flask,  render_template
 from psycopg2 import connect
 
 app = Flask(__name__)
       
 conn = connect(
-    host="localhost",
+    host='172.17.0.2', 
     port=5432,
     user="webappdev",
     password="1234",
@@ -18,7 +18,6 @@ def index():
 @app.route('/usernames', methods=['GET'])
 def get_usernames():
     cur = conn.cursor()
-    print(cur)
     cur.execute("SELECT * from users;")
     usernames = cur.fetchall()
     return usernames
